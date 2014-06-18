@@ -1,6 +1,7 @@
 # Kamecenter
 
-TODO: Write a gem description
+This gem allows RoR-developed games to publish achievements for their users into Kamecenter, with two simple methods.
+
 
 ## Installation
 
