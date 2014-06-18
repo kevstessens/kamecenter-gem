@@ -6,7 +6,7 @@ TODO: Write a gem description
 
 Add this line to your application's Gemfile:
 
-gem 'kamecenter', github: 'kevstessens/kamecenter-gem'
+	gem 'kamecenter', github: 'kevstessens/kamecenter-gem'
 
 And then execute:
 
@@ -27,6 +27,8 @@ And then execute:
 			- 20: INCORRECT SIGNATURE
 			- 30: ALREADY ADDED
 		response.message => Returns a message (like "Incorrect signature!")
+
+###Getting data from a user
 
 	Kamecenter.get_user_data("game_id","uid","secret_key")
 
