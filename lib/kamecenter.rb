@@ -6,7 +6,7 @@ require 'base64'
 require 'digest'
 
 
-class Response
+class KameResponse
   def initialize(status, message)
     @status = status
     @message = message
@@ -22,7 +22,7 @@ class Response
 end
 
 
-class User
+class KameUser
   def initialize(uid, name,achievements)
     @uid = uid
     @name = name
@@ -42,7 +42,7 @@ class User
   end
 end
 
-class Achievement
+class KameAchievement
   def initialize(id, points, name)
     @id = id
     @points = points
@@ -72,7 +72,7 @@ module Kamecenter
 
     response = Net::HTTP.get_response(uri)
     data = JSON.parse(response.body)
-    response_object = Response.new(data["status"],data["message"])
+    response_object = KameResponse.new(data["status"],data["message"])
     return response_object
   end
 
@@ -85,10 +85,10 @@ module Kamecenter
     data = JSON.parse(response.body)
     i=0
     JSON.parse(data["user"])["achievements"].each do |ac|
-      achievements[i]=Achievement.new(ac["id"],ac["points"],ac["name"])
+      achievements[i]=KameAchievement.new(ac["id"],ac["points"],ac["name"])
       i=i+1
     end
-    user = User.new(JSON.parse(data["user"])["uid"],JSON.parse(data["user"])["name"],achievements)
+    user = KameUser.new(JSON.parse(data["user"])["uid"],JSON.parse(data["user"])["name"],achievements)
     return user
 
   end
