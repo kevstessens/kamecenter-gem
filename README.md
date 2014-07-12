@@ -44,6 +44,16 @@ And then execute:
        - response.achievements[0].id => Returns the id of the achievement
        - response.achievement[0].points => Returns the points for the achievement
 
+
+##Getting iframe URL for user
+
+	Kamecenter.get_iframe_url("game_key","uid","secret_key")
+
+	It returns a string, that must be used as Iframe src.
+
+####example
+<iframe src="<%= Kamecenter.get_iframe_url("1efe33f3f3","243343435","wej39fj39fj39jf") %>"></iframe>
+
 ## Contributing
 
 1. Fork it
@@ -51,3 +61,7 @@ And then execute:
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Details
+
+Created by Kevin Stessens for DPOI - Universidad Austral
