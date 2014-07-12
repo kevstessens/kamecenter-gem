@@ -52,7 +52,8 @@ And then execute:
 	It returns a string, that must be used as Iframe src.
 
 ####example
-<iframe src="<%= Kamecenter.get_iframe_url("1efe33f3f3","243343435","wej39fj39fj39jf") %>"></iframe>
+
+    <iframe src="<%= Kamecenter.get_iframe_url("1efe33f3f3","243343435","wej39fj39fj39jf") %>"></iframe>
 
 ## Contributing
 
