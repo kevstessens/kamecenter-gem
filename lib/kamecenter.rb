@@ -65,10 +65,10 @@ end
 
 
 module Kamecenter
-  def self.post_achievement(game_id,achievement_id,user_id,secret_key)
+  def self.post_achievement(game_key,achievement_id,uid,secret_key)
 
-    signature = Digest::MD5.hexdigest("/app/"+ game_id+"/user/"+ user_id+"/achievement/"+ achievement_id+"/"+secret_key+"/")
-    uri = URI.parse("http://kamecenter.herokuapp.com/app/"+ game_id+"/user/"+ user_id+"/achievement/"+ achievement_id+"/"+signature)
+    signature = Digest::MD5.hexdigest("/app/"+ game_key+"/user/"+ uid+"/achievement/"+ achievement_id+"/"+secret_key+"/")
+    uri = URI.parse("http://kamecenter.herokuapp.com/app/"+ game_key+"/user/"+ uid+"/achievement/"+ achievement_id+"/"+signature)
 
     response = Net::HTTP.get_response(uri)
     data = JSON.parse(response.body)
@@ -76,10 +76,10 @@ module Kamecenter
     return response_object
   end
 
-  def self.get_user_data(game_id,user_id,secret_key)
+  def self.get_user_data(game_key,uid,secret_key)
 
-    signature = Digest::MD5.hexdigest("/app/"+ game_id+"/user/"+ user_id+"/achievements/"+secret_key+"/")
-    uri = URI.parse("http://kamecenter.herokuapp.com/app/"+ game_id+ "/user/" + user_id +"/achievements/"+signature)
+    signature = Digest::MD5.hexdigest("/app/"+ game_key+"/user/"+ uid+"/achievements/"+secret_key+"/")
+    uri = URI.parse("http://kamecenter.herokuapp.com/app/"+ game_key+ "/user/" + uid +"/achievements/"+signature)
     achievements=Array.new
     response = Net::HTTP.get_response(uri)
     data = JSON.parse(response.body)
@@ -92,5 +92,11 @@ module Kamecenter
     return user
 
   end
+
+  def self.get_iframe_url(game_key, uid, secret_key)
+    signature = Digest::MD5.hexdigest("/app/"+ game_key+"/user/"+ uid+"/"+secret_key+"/")
+    return "http://kamecenter.herokuapp.com/app/"+ game_key+ "/user/" + uid +"/"+signature
+  end
+
 
 end
