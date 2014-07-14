@@ -94,8 +94,13 @@ module Kamecenter
   end
 
   def self.get_iframe_url(game_key, uid, secret_key)
-    signature = Digest::MD5.hexdigest("/app/"+ game_key+"/user/"+ uid+"/"+secret_key+"/")
+    signature = Digest::MD5.hexdigest("/app/"+ game_key+"/user/"+ uid+"/"+Date.current().strftime("%d-%m-%y")+"/"+secret_key+"/")
     return "http://kamecenter.herokuapp.com/app/"+ game_key+ "/user/" + uid +"/"+signature
+  end
+
+  def self.get_iframe_url_friends(game_key, uid, secret_key, friends)
+    signature = Digest::MD5.hexdigest("/app/"+ game_key+"/user/"+ uid+"/friends/"+friends+"/"+Date.current().strftime("%d-%m-%y")+"/"+secret_key+"/")
+    return "http://kamecenter.herokuapp.com/app/"+ game_key+ "/user/" + uid + "/friends/" + friends +"/"+signature
   end
 
 
