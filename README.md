@@ -57,13 +57,13 @@ And then execute:
 
 ##Getting iframe URL for user with FB friends
 
-    Kamecenter.get_iframe_url_friends("game_key","uid","facebook_friends_list"secret_key")
+    Kamecenter.get_iframe_url_friends("game_key","uid","secret_key","facebook_friends_list")
 
     It recieves the same parameters, but also a CSV list of te Facebook UIDs of the user friends. It returns a string, that must be used as Iframe src.
 
 ####example
 
-    <iframe src="<%= Kamecenter.get_iframe_url_friends("1efe33f3f3","243343435","1234930,3544933","wej39fj39fj39jf") %>"></iframe>
+    <iframe src="<%= Kamecenter.get_iframe_url_friends("1efe33f3f3","243343435","wej39fj39fj39jf","1234930,3544933") %>"></iframe>
 
 ## Contributing
 
